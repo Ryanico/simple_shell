@@ -1,4 +1,5 @@
-#include shell.h"
+#include "shell.h"
+#include <stdlib.h>
 
 /**
  * get_len - Get the length of number.
@@ -13,7 +14,7 @@ int get_len(int m)
 	if (m < 0)
 	{
 		len++;
-		m1 = nm* -1;
+		m1 = m* -1;
 	}
 	else
 	{
@@ -58,7 +59,7 @@ char *aux_itoa(int m)
 	do {
 		*(buffer + len) = (m1 % 10) + '0';
 		m1 = m1 / 10;
-		lenght--;
+		length--;
 	}
 	while (m1 > 0)
 		;

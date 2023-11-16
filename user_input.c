@@ -10,7 +10,7 @@ void read_function(char *function, size_t size) {
 			exit(EXIT_FAILURE);
 		}
 	}
-	function[strcspn(function, "\n")] = '\0'; // Remove newline
+	function[strcspn(function, "\n")] = '\0'; /* Remove newline*/
 }
 
 
@@ -27,5 +27,5 @@ void read_function(char *function, size_t size) {
 			exit(EXIT_FAILURE);
 		}
 	}
-	function[strcspn(function, "\n")] = '\0'; // Remove newline
+	function[strcspn(function, "\n")] = '\0'; /* Remove newline*/
 }

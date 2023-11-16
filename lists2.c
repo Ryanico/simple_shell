@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
  * adds_rvar_node - adds a variable at the end
@@ -13,7 +13,7 @@ r_vars *adds_rvar_node(r_vars **Head, int lvars, char *vals, int lvals)
 {
 	r_vars *New, *Temp;
 
-	new = malloc(sizeof(r_vars));
+	New = malloc(sizeof(r_vars));
 	if (New == NULL)
 		return (NULL);
 
@@ -22,7 +22,7 @@ r_vars *adds_rvar_node(r_vars **Head, int lvars, char *vals, int lvals)
 	New->len_val = lvals;
 
 	New->next = NULL;
-	Temp = *head;
+	Temp = *Head;
 
 	if (Temp == NULL)
 	{

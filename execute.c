@@ -1,18 +1,18 @@
  #include "shell.h"
 
 void execute_function(const char *function) {
-	pid_t child_pid = fork(); //create a child process
+	pid_t child_pid = fork(); /*create a child process*/
 
 	if (child_pid == -1) {
 		perror("fork");
 		exit(EXIT_FAILURE);
 	} else if (child_pid == 0) {
-		// Child process
+		/* Child process*/
 		execve(function, function, (char *)NULL);
 		perror("execve");
 		exit(EXIT_FAILURE);
 	} else {
-		// Parent process
+		/* Parent process*/
 		wait(NULL);
 	}
 }
@@ -29,10 +29,10 @@ void execute_function(const char *function) {
 		ryanlobo_print("Error forking process.\n");
 		exit(EXIT_FAILURE);
 	} else if (child_pid == 0) {
-		// Child process
+		/* Child process*/
 
-		// Parse the function and its arguments
-		char *arg[130]; // Maximum 130 arguments (adjust as needed)
+		/* Parse the function and its arguments*/
+		char *arg[130]; /* Maximum 130 arguments (adjust as needed)*/
 		int args_count = 0;
 
 		char *token = strtok((char *)function, " ");
@@ -40,16 +40,16 @@ void execute_function(const char *function) {
 			arg[args_count++] = token;
 			token = strtok(NULL, " ");
 		}
-		arg[args_count] = NULL; // Null-terminate the arguments array
+		arg[args_count] = NULL; /* Null-terminate the arguments array*/
 
-		// Execute the function
+		/* Execute the function*/
 		execve(arg[0], arg);
 
-		// If execve fails, print an error message
+		/* If execve fails, print an error message*/
 		ryanlobo_print("Error executing function.\n");
 		exit(EXIT_FAILURE);
 	} else {
-		// Parent process
+		/* Parent process*/
 		wait(NULL);
 	}
 }

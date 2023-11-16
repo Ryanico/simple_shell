@@ -1,5 +1,5 @@
 #include "shell.h"
-
+#include "shell_data_header.h"
 /**
  * err_env - error message for env
  * @datsh: data relevant (counter, arguments)
@@ -14,9 +14,9 @@ char *err_env(shell_data *datsh)
 
 	ver_stng = aux_itoa(datsh->counter);
 	message = ": Unable to add/remove from environment\n";
-	len = _strlen(datsh->av[0]) + _strlen(ver_stng);
-	len += _strlen(datsh->args[0]) + _strlen(message) + 4;
-	err = malloc(sizeof(char) * (leng + 1));
+	len = strlen(datsh->av[0]) + strlen(ver_stng);
+	len += strlen(datsh->args[0]) + strlen(message) + 4;
+	err = malloc(sizeof(char) * (len + 1));
 	if (err == 0)
 	{
 		free(err);
@@ -24,13 +24,13 @@ char *err_env(shell_data *datsh)
 		return (NULL);
 	}
 
-	_strcpy(err, datsh->av[0]);
-	_strcat(err, ": ");
-	_strcat(err, ver_stng);
-	_strcat(err, ": ");
-	_strcat(err, datsh->args[0]);
-	_strcat(err, message);
-	_strcat(err, "\0");
+	strcpy(err, datsh->av[0]);
+	strcat(err, ": ");
+	strcat(err, ver_stng);
+	strcat(err, ": ");
+	strcat(err, datsh->args[0]);
+	strcat(err, message);
+	strcat(err, "\0");
 	free(ver_stng);
 
 	return (err);
@@ -48,8 +48,8 @@ char *errorpath_111(shell_data *datsh)
 	char *err;
 
 	ver_stng = aux_itoa(datsh->counter);
-	len = _strlen(datsh->av[0]) + _strlen(ver_stng);
-	len += _strlen(datsh->args[0]) + 24;
+	len = strlen(datsh->av[0]) + strlen(ver_stng);
+	len += strlen(datsh->args[0]) + 24;
 	err = malloc(sizeof(char) * (len + 1));
 	if (err == 0)
 	{
@@ -57,13 +57,13 @@ char *errorpath_111(shell_data *datsh)
 		free(ver_stng);
 		return (NULL);
 	}
-	_strcpy(err, datsh->av[0]);
-	_strcat(err, ": ");
-	_strcat(err, ver_stng);
-	_strcat(err, ": ");
-	_strcat(err, datsh->args[0]);
-	_strcat(err, ": Permission denied\n");
-	_strcat(err, "\0");
+	strcpy(err, datsh->av[0]);
+	strcat(err, ": ");
+	strcat(err, ver_stng);
+	strcat(err, ": ");
+	strcat(err, datsh->args[0]);
+	strcat(err, ": Permission denied\n");
+	strcat(err, "\0");
 	free(ver_stng);
 	return (err);
 }

@@ -8,6 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 /*
  *These are my prototypes
@@ -33,7 +34,7 @@ void auxhelp_cd(void);
 r_vars *adds_rvar_node(r_vars **Head, int lvars, char *vals, int lvals);
 void frees_rvar_list(r_vars **Head);
 sep_lists *adds_sep_node_end(sep_lists **Head, char Sep);
-void free_sep_lists(sep_lists **Head);
+void free_sep_list(sep_lists **Head);
 line_lists *adds_line_node_end(line_lists **Head, char *Line);
 void frees_line_list(line_lists **Head);
 void _memscpy(void *Newptrs, const void *ptrs, unsigned int Size);
